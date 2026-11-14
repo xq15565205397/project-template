@@ -1,20 +1,3 @@
-<!-- CODEGRAPH_START -->
-
-## CodeGraph
-
-In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the repo root), reach for it BEFORE grep/find or reading files when you need to understand or locate code:
-
-- **MCP tools** (when available): `codegraph_explore` answers most code questions in one call — the relevant symbols' verbatim source plus the call paths between them. `codegraph_node` returns one symbol's source + callers, or reads a whole file with line numbers. If the tools are listed but deferred, load them by name via tool search.
-- **Shell** (always works): `codegraph explore "<symbol names or question>"` and `codegraph node <symbol-or-file>` print the same output.
-
-If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
-
-<!-- CODEGRAPH_END -->
-
-#
-
---- project-doc ---
-
 ## 项目简介
 
 TODO（项目定制）：待补充项目目标、范围和主要产出。
@@ -40,10 +23,16 @@ TODO（项目定制）：待补充技术栈、业务数据边界、数据存储�
 - Git 提交说明使用简短、准确的中文。
 - 测试优先编写集成测试，覆盖关键业务流程和组件协作；仅在需要验证独立逻辑或集成测试难以覆盖的边界情况时补充单元测试，避免为实现细节编写大量单元测试。
 - 文件或资料不知道该放在哪个目录时，先询问用户，不要自行猜测或创建新目录。
-- 当用户要求新增项目任务时，在 `doc/tasks/` 下创建以该任务名称命名的文件夹，并将该任务相关的 requirements、design、research 文件统一放入该文件夹；此规则不适用于 App 中的 Todo。
 - 当用户明确要求“记下”或“记住”某项内容时，先检查 `doc/memory.md`，整理拟记录的内容并确定所属类别，然后向用户展示拟写入内容并征求批准；获得批准后才能写入。按类别维护记忆，不要直接在文件末尾追加：若内容已存在或用户是在修正旧记忆，应更新或合并对应条目；保留其他仍有效的记忆，仅在确有需要时新增类别。
 - 使用 UI 原型实现界面时，必须先实际运行原型，并对待实现的界面和关键状态截图，再依据截图实现视觉效果。对于需要交互才能出现的弹窗或其他界面状态，必须使用 Playwright 操作原型、触发对应状态并截图。实现时还须还原原型的交互方式；具体业务逻辑则以 `doc/requirements/`、`doc/design/` 及相关 `doc/tasks/<任务名>/` 中已确认的文件为准，不用参考ui原型。
 - 所有任务汇报，问题的回答默认使用i-have-adhd技能
+
+## 任务规则
+
+- 当用户要求新增项目任务时，先查看 `doc/tasks/任务看板.md`：进行中任务超过 3 个时，询问是否有任务已终止；存在已完成但未归档的任务时，提醒用户归档。
+- 创建项目任务时，在 `doc/tasks/` 下新建以任务名称命名的文件夹；该任务的 requirements、design、research 及其他相关文件统一存放于此。
+- 新任务及状态变化须同步到 `doc/tasks/任务看板.md`。
+- 用户确认归档任务后，将 `doc/tasks/<任务名>/` 移至 `doc/tasks/archive/YYYY-MM/<任务名>/`，并将该任务移至 `doc/tasks/任务看板.md` 的“已归档”分类。
 
 ## 项目决策记录
 
